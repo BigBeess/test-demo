@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="切换显示状态" @click="changeIsShow"></input>
+        <input type="button" value="年龄增加" @click="addage"></input>
+        <img v-show="isShow" src="./image/1.jpg" alt="">
+        <!-- <span v-show="isShow" alt="">hahah</span> -->
+        <!-- <span v-show="age>18" alt="">xixixi</span> -->
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                isShow: false,
+                age: 17,
+            },
+            methods: {
+                changeIsShow: function () {
+                    this.isShow = !this.isShow;
+                },
+                addage: function () {
+                    this.age++;
+                }
+            }
+        }) 
+    </script>
+
+</body>
+
+</html>

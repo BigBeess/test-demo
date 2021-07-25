@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/记事本.css">
+</head>
+
+<body>
+    <section id="todoapp">
+        <!-- 输入框 -->
+        <header class="header">
+            <h1>BigBee记事本</h1>
+            <input v-model="inputValue" @keyup.enter="add" autofocus="autofocus" autocomplete="off" placeholder="请输入任务" class="shuru">
+        </header>
+        <!-- 列表区域 -->
+        <section class="main">
+            <ul class="biaodan">
+                <li class="todo" v-for="(item,index) in list">
+                    <div class="view">
+                        <span class="index">{{ index+1 }}</span>
+                        <!-- <span>{{ item }}</span> -->
+                        <label>{{ item }}</label>
+                        <button class="destroy" @click="remove(index)"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <!-- 统计和清空 -->
+    <footer class="footer">
+        <span class="todo-count">
+            <strong>{{ list.length }}</strong>
+            items left
+        </span>
+    </footer>
+    <!-- 底部 -->
+    <footer class="info">
+
+    </footer>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#todoapp",
+            data:{
+                list:["写代码","吃饭","睡觉"],
+                inputValue:"好爱好学习，天天向上"
+            },
+            methods:{
+                add:function(){
+                    this.list.push(this.inputValue);
+                },
+                remove:function(index){
+                    console.log("删除");
+                    console.log(index);
+                    this.list.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
